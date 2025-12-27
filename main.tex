@@ -1,0 +1,250 @@
+%preamble
+\documentclass{article}
+\usepackage{graphicx} 
+\usepackage{booktabs}
+\usepackage{mdframed}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[top=2cm, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{siunitx}
+
+%title
+\title{\textbf{DIY Capacitive Touch Sensor}}
+\author{Margalo Amos V. Cerro*, John Kyle V. Ganade, Elaisa An R. Gueco,\\ Jemima M. Mosqueda, Maria Akara Hydrael D. Parnes, Bryanne Lynson P. Plazos\\ (12 - STEM A - Aristotle)}
+\date{December 2025}
+\begin{document}
+\maketitle
+
+%document proper
+\section{Introduction}
+\par{Capacitors are essential components in many real-world technologies. Hence, it is crucial to learn about the science and processes that govern them. By designing and building a working model that demonstrates how capacitors store and release electrical energy, we will be able to analyze the behavior of capacitor systems based on measurable data and relate the findings to capacitance formulae and theoretical principles, cultivating a deepened understanding and appreciation of science and technology that elevates our way of living.}
+
+\section{Materials and Methods}
+
+\subsection{List of Materials}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{Screenshot 2025-12-20 182148.png}
+\end{figure}
+
+\subsection{Costing}
+\begin{center}
+\begin{tabular} {l l l}
+\hline
+\textbf{Item} & \textbf{Quantity} & \textbf{Cost (PHP)}\\
+\hline
+Arduino Nano 5V with USB Cable & 1 & 219.00\\
+Breadboard & 1 & 105.00\\
+Male/Male Jumper Wire & 3 & 15.00\\
+1 M $\Omega$ Resistor & 1 & 1.00\\
+Aluminum Foil & 1 & 0.00\\
+\hline
+Grand Total & & \textbf{340.00}\\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+*Corresponding author: viscamargaloamos@gmail.com
+
+\subsection{Circuit Design}
+\par{We opted to do a capacitive touch sensor that detects changes in capacitance when a conductive material (in this case, the aluminum foil) is touched. Figures 1-3 demonstrate the schematic diagram, breadboard diagram, and the actual prototype.}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.4\textwidth]{Screenshot 2025-12-20 184425.png}
+\end{figure}
+
+\begin{center}
+    \textbf{Figure 1.} Schematic Diagram of the DIY Capacitive Touch Sensor \\ (Photo by Margalo Amos V. Cerro created using circuit-diagram.org)
+\end{center}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.3\textwidth]{Screenshot 2025-12-25 162218.png}
+\end{figure}
+
+\begin{center}
+    \textbf{Figure 2.} Breadboard Diagram of the DIY Capacitive Touch Sensor \\ (Photo by Margalo Amos V. Cerro created using cirkitdesigner.com) \\Note: The other wire leads to the DIY conductive material, which we were unable to explicitly show due to the asset limitations in the Cirkit Designer.
+\end{center}
+
+\vspace{5.0cm}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{Screenshot 2025-12-26 153458.png}
+\end{figure}
+
+\begin{center}
+    \textbf{Figure 3.} Documentation of the Actual DIY Capacitive Touch Sensor (Photo by Margalo Amos V. Cerro)
+\end{center}
+
+\vspace{0.5cm}
+
+\subsection{Component and Pin Configuration Logic}
+
+\vspace{0.1cm}
+
+\textbf{Component Logic}
+
+\vspace{0.1cm}
+
+\begin{itemize}
+\item{\par{\textbf{Arduino Nano 5 V} - selected due to its light weight design and ability to be integrated in a breadboard.}}
+\item{\par{\textbf{1 M$\Omega$\hspace{0.1cm}\text{resistor}} - selected due to its high resistance that is capable of significantly reducing the current that passes through the circuit, detectable enough for the microcontroller to read.}}
+\item{\par{\textbf{Aluminum Foil} - selected due to its ability to conduct electricity.}}
+\item{\par{\textbf{Jumper Wire} - facilitates convenient connections during prototyping due to its plug and pull capabilities.}}
+\end{itemize}
+
+\textbf{Pin Configuration Logic}
+
+\vspace{0.1cm}
+
+\begin{itemize}
+\item{\par{\textbf{D9} - a digital pin that is capable of sending electricity which can be set as \underline{high} or \underline{low}; selected due to being parallel with A0, ensuring the organization of wirings in the breadboard.}}
+\item{\par{\textbf{A0} - an analog pin that is capable of detecting not only high or low pulses of electricity but also the exact amount of voltage.}}
+\end{itemize}
+
+\vspace{10.0cm}
+
+\subsection{Program Flowchart}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{Gemini_Generated_Image_36mklp36mklp36mk.png} % hahaha kita nyo ba to
+\end{figure}
+
+\begin{center}
+\textbf{Figure 4.} Program Flowchart 
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{itemize}
+\item{The system starts by draining any excess electricity out of the circuit.}
+\item{Five (5) milliseconds is allotted before proceeding with pushing electricity onto the the circuit via D9.}
+\item{Once the electricity passes, it is read by A0.}
+\item{The built-in serial plotter at Arduino Integrated Development Environment (AIDE) prints the voltages read by A0 every 0.1 millisecond (ms) using the built-in Serial Plotter and Monitor. CoolTerm was used as an external Serial Monitor in order to capture the real-time readings in a .csv for graph generation in LaTeX.}
+\end{itemize}
+
+\par{The program is written using C++.}
+
+\vspace{10.0cm}
+
+\section{Results and Discussion}
+
+\subsection{Analog Pin (A0) Readings}
+
+\par{The AIDE serial plotter demonstrated visible changes in charge/discharge behaviour when the aluminum foil is not touched or touched, confirming that the system is working.}
+
+\vspace{0.5cm}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{Screenshot 2025-12-26 201147.png}
+\end{figure}
+
+\begin{center}
+\textbf{Figure 5.} Snapshot from the Real-time Voltage-Elapsed Time graph of the working DIY Capacitive Touch Sensor in No Touch vs. With Touch (Photo by Margalo Amos V. Cerro generated using the Arduino IDE COM9 Serial Plotter)
+\end{center}
+
+\vspace{0.5cm}
+
+\par{This observation is consistent with the AIDE serial monitor, demonstrating significant changes in voltage as the aluminum foil is touched. For this particular runtime, the source code was modified to show the voltage and the charge percentage for easier interpretation.}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{Screenshot 2025-12-26 203112.png}
+\end{figure}
+
+\begin{center}
+\textbf{Figure 6.} Snaposhot from the Real Time Serial Monitor Readings of the working DIY Capacitive Touch Sensor in No Touch vs. With Touch (Photo by Margalo Amos V. Cerro generated using the Arduino IDE COM9 Serial Monitor)
+\end{center}
+
+\par{Another runtime was conducted using CoolTerm as the serial monitor to allow recording the entire reading. As shown in Figure 7-8, we can clearly see the regions in the graph when it was touched or not due to differences in charge-discharge behaviour.}
+
+\vspace{10.0cm}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}
+[
+    xlabel={Elapsed Time (ms)},
+    ylabel={Voltage (V)},
+    xmin=0, xmax=3200, 
+    ymin=0, ymax=6,
+    grid=none,
+    width=15cm,
+    height=7cm
+]
+\addplot[
+    color=black,
+    thick,
+]
+table [x index=0, y index=1, col sep=comma] {voltage.csv}; 
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+\vspace{0.5cm}
+
+\begin{center}
+\textbf{Figure 7.} Voltage Elapsed-Time graph of the DIY Capacitive Touch Sensor Recorded Using CoolTerm.
+\end{center}
+
+\vspace{0.5cm}
+
+\par{In order to properly compare the difference in charge-discharge behaviour when the DIY capacitive touch sensor is touched or not touched, Figure 7 was adjusted, as reflected in Figure 8.}
+
+\vspace{0.5cm}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{Screenshot 2025-12-27 111735.png}
+\end{figure}
+
+\begin{center}
+\textbf{Figure 8.} Voltage Elapsed-Time graph of the DIY Capacitive Touch Sensor Recorded Using CoolTerm, focused at (a) 195-220 ms and (b) 390-415 ms.
+\end{center}
+
+\vspace{0.5cm}
+
+\par{These readings align with the AIDE serial plotter, demonstrating longer charging time when the DIY capacitive touch sensor is touched.}
+
+\vspace{10.0cm}
+
+\subsection{Calculation of Capacitance}
+\par{Ayoko na bat kasi nag-aassign ng peta di naman nagtuturo}
+
+\subsection{Sources of Error}
+
+\vspace{0.5cm}
+
+\begin{itemize}
+
+\item{\textbf{Variability in Applied Force:} Inconsistent pressure across trials alters the contact surface area and stimulation intensity, introducing fluctuations in recorded data.}
+
+\item{\textbf{Electromagnetic Interference:} Proximity to electronic devices or unshielded wiring creates signal noise, particularly in capacitive sensing hardware like this particular project.}
+
+\item{\textbf{Signal Processing Time Latencies:} Inherent delays between the physical contact event and the digital registration of the signal, caused by software execution loops or hardware sampling rates, can result in temporal misalignment between the stimulus and the recorded data.}
+    
+\end{itemize}
+\section{Conclusion and Recommendations}
+\par{This paper presents a working DIY Capacitive Touch Sensor made using low cost components. Using Arduino IDE's serial plotter and monitor along with CoolTerm's serial monitor, we were able to test its touch sensing capabilities via plotting and calculating the changes in charge-discharge voltage and changes in capacitance.}
+
+\vspace{0.5cm}
+
+\par{To improve this working system, it is recommended to build a real-time dashboard, preferrably built using HTML, CSS, and JavaScript to improve accessibility and interpretability of the system, fostering a better user experience.}
+
+\section{Reflection}
+
+\par{Lagay n'yo na lang dito}
+
+\section{Notes}
+[Demonstration Video]
+https://tinyurl.com/DIY-Capacitive-Touch-Sensor
+\end{document}
